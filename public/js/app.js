@@ -31,4 +31,18 @@ $(document).ready(function(){
             }
         })
     })
+    //GET ATENDIMENTO
+    $("#busca").submit(function(e){
+        e.preventDefault()
+        let form = $(this).serialize()
+        $.ajax({
+            type: "POST",
+            url: "core/controller/ctlAtend.php?op=get",
+            data: form,
+            dataType: "JSON",
+            success: function(res){
+                alert(res)
+            }
+        })
+    })
 })
