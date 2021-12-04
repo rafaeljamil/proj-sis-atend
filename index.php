@@ -36,6 +36,16 @@
             <a class="btn btn-secondary mx-1 my-1" href="index.php?pg=admin">Administração</a>
             <button id="logout" class="btn btn-warning mx-1 my-1">Sair</button>
         </div>
+        <div class="d-flex justify-content-center">
+        <div class="success hidden">
+            <p class='alert alert-success'></p>
+        </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <div class="error hidden">
+                <p class='alert alert-danger'></p>
+            </div>
+        </div>
         <div>
             <?php 
             

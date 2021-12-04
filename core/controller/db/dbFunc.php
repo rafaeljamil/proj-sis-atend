@@ -22,10 +22,10 @@
     //ATENDIMENTOS
     //Set
     function setAtend($atend){
-        include_once "dbCOn.php";
+        include_once "dbCon.php";
         $a = sprintf(
-            "INSERT INTO atendimentos (id_user, local, descricao, solicitante) 
-            VALUES '%s', '%s', '%s', '%s'",
+            "INSERT INTO atendimentos (id_user, local, descricao, solicitante)
+            VALUES ('%s', '%s', '%s', '%s')",
             $atend['id_user'],
             $atend['local'],
             $atend['descricao'],
@@ -33,7 +33,8 @@
         );
         $query = mysqli_query($con, $a);
         if(!$query){
-            return 0;
+            echo $query;
+            //return 0;
         }else{
             return 'ok';
         }
@@ -43,15 +44,18 @@
     function getAtend($atend){
         include_once "dbCon.php";
         $a = sprintf(
-            "SELECT local, descricao, solicitante, data_criacao FROM atendimentos
-            WHERE local = '%s' 
-            OR solicitante = '%s'", $atend, $atend
+            "SELECT descricao, solicitante, data_criacao 
+            FROM atendimentos 
+            WHERE local = '%s'", $atend
         );
         $query = mysqli_query($con, $a);
-        if(!$query){
+        //echo $a;
+        if(mysqli_num_rows($query)< 1){
+            //echo "not query";
             return 0;
         }else{
             $return = mysqli_fetch_all($query);
+            //echo implode(" ", $return);
             return $return;
         }
         mysqli_close($con);
