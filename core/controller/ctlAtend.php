@@ -21,7 +21,7 @@ if($op == 'set'){
     $busca = $_POST['busca'];
     //echo $busca;
     //echo json_encode($busca);
-    $a = getAtend($busca);
+    $a = getAtend($busca, $_SESSION['id']);
     if($a === 0){
         echo json_encode('err-busca');
         //echo json_encode('err-busca');

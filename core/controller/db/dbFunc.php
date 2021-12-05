@@ -41,12 +41,12 @@
         mysqli_close($con);
     }
     //Get by local, solicitante
-    function getAtend($atend){
+    function getAtend($atend, $id){
         include_once "dbCon.php";
         $a = sprintf(
             "SELECT descricao, solicitante, data_criacao 
             FROM atendimentos 
-            WHERE local = '%s'", $atend
+            WHERE local = '%s' AND id_user = '%s'", $atend, $id
         );
         $query = mysqli_query($con, $a);
         //echo $a;
